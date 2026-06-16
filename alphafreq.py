@@ -1,0 +1,19 @@
+n = int(input("Enter number of lines: "))
+
+for _ in range(n):
+    line = input()
+
+    freq = {}
+
+    for ch in line:
+        if ch.isalpha():
+            freq[ch] = freq.get(ch, 0) + 1
+
+    max_freq = max(freq.values())
+
+    result = [ch for ch in freq if freq[ch] == max_freq]
+
+    # Capital letters first, then small letters, both in increasing order
+    result.sort(key=lambda x: (x.islower(), x))
+
+    print("".join(result))
